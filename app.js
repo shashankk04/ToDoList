@@ -4,7 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
-
+require('dotenv').config();
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 //MONgoose conection
-mongoose.connect('mongodb+srv://shiv04313:rgdlk8A4k8CXyQVL@todolistcluster.hjq1vwo.mongodb.net/?retryWrites=true&w=majority');
+mongoose.connect(process.env.MONGODB_URI);
 //schema definition
 const itemsSchema = {
   name: String,
